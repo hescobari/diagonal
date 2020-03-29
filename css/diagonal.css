@@ -1,0 +1,208 @@
+/* Body base style */
+body
+{
+	margin: 0px;
+	padding: 0px;
+	overflow-x: hidden;
+}
+
+/* Variables of the style, try to just change this area */
+:root
+{
+	/* Height of the scren */
+	--mini-screen: 30vh;
+	--small-screen: 40vh;
+	--medium-screen: 60vh;
+	--big-screen: 100vh;
+
+	/* Overlays backgrounds */
+	--overlay1-color: rgba(0, 0, 0, 0.05);
+	--overlay2-color: rgba(255, 0, 0, 0.90);
+
+	/* Hover gap */
+	--gap: 12%;
+
+	/* Transition time */
+	--time: 0.75s;
+
+	/* Content diagonal */
+	/* Strait = 200deg, Diagonal = 0deg */
+	--content-diagonal1: skew(200deg);
+	--content-diagonal2: skew(0deg);
+}
+/* End of the variables of the style */
+
+/* Style of the diagonal view */
+
+.welcome
+{
+	position: absolute;
+	background-image: url('../assets/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: var(--mini-screen);
+	overflow-x: hidden;
+}
+
+.overlay1, .overlay2
+{
+    position: absolute;
+    width: 62vw;
+	height: var(--mini-screen);
+	transform: skew(-200deg);
+    z-index: 10;
+	transition: width var(--time), left var(--time);
+	text-align: center;
+}
+
+.overlay1
+{
+	background-color: var(--overlay1-color);
+	left: -12vw;
+	overflow-x: hidden;
+}
+
+.overlay1:hover
+{
+	width: calc(62vw + var(--gap));
+}
+
+/* .overlay1:active
+{
+	width: 124vw;
+} */
+
+.overlay1:hover + .overlay2
+{
+	left: calc(50vw + var(--gap));
+}
+
+/* .overlay1:active + .overlay2
+{
+	left: 112vw;
+} */
+
+.overlay2
+{
+	background-color: var(--overlay2-color);
+	left: 50vw;
+	overflow: hidden;
+}
+
+.overlay2:hover
+{
+	width: calc(62vw + var(--gap));
+	left: calc(50vw - var(--gap));
+}
+
+/* .overlay2:active
+{
+	width: 124vw;
+	left: -12vw;
+} */
+
+.overlay1 .content, .overlay2 .content
+{
+	position: absolute;
+	display: block;
+	top: 50%;
+	margin: 0px 15vw;
+	padding: 10px 20px;
+	transform: translate(0, -50%);
+	background-color: #ffffff;
+}
+
+.overlay1 .content
+{
+	transform: var(--content-diagonal1);
+}
+
+.overlay2 .content
+{
+	transform: var(--content-diagonal2);
+}
+
+/* Little larger screen */
+@media only screen and (min-width: 480px)
+{
+	.welcome
+	{
+		height: var(--small-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--small-screen);
+	}
+}
+
+/* Pads and larger phones */
+@media only screen and (min-width: 600px) and (orientation: landscape)
+{
+	.welcome
+	{
+		height: var(--medium-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--medium-screen);
+	}
+}
+
+/* Larger pads */
+@media only screen and (min-width: 768px) and (orientation: portrait)
+{
+	.welcome
+	{
+		height: var(--small-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--small-screen);
+	}
+}
+
+/* Larger pads */
+@media only screen and (min-width: 768px) and (orientation: landscape)
+{
+	.welcome
+	{
+		height: var(--big-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--big-screen);
+	}
+}
+
+/* Horizontal pads and laptops */
+@media only screen and (min-width: 992px) and (orientation: landscape)
+{
+	.welcome
+	{
+		height: var(--medium-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--medium-screen);
+	}
+}
+
+/* Really large screens */
+@media only screen and (min-width: 1280px)
+{
+	.welcome
+	{
+		height: var(--big-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--big-screen);
+	}
+}
