@@ -10,9 +10,8 @@ body
 :root
 {
 	/* Height of the scren */
-	--mini-screen: 30vh;
-	--small-screen: 40vh;
-	--medium-screen: 60vh;
+	--small-screen: 30vh;
+	--medium-screen: 40vh;
 	--big-screen: 100vh;
 
 	/* Overlays backgrounds */
@@ -41,7 +40,7 @@ body
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
-	height: var(--mini-screen);
+	height: var(--small-screen);
 	overflow-x: hidden;
 }
 
@@ -49,7 +48,7 @@ body
 {
     position: absolute;
     width: 62vw;
-	height: var(--mini-screen);
+	height: var(--small-screen);
 	transform: skew(-200deg);
     z-index: 10;
 	transition: width var(--time), left var(--time);
@@ -106,10 +105,10 @@ body
 {
 	position: absolute;
 	display: block;
-	top: 50%;
 	margin: 0px 15vw;
 	padding: 10px 20px;
-	transform: translate(0, -50%);
+	top: 20%;
+	transform: translate(0, -20%);
 	background-color: #ffffff;
 }
 
@@ -128,20 +127,6 @@ body
 {
 	.welcome
 	{
-		height: var(--small-screen);
-	}
-
-	.overlay1, .overlay2
-	{
-		height: var(--small-screen);
-	}
-}
-
-/* Pads and larger phones */
-@media only screen and (min-width: 600px) and (orientation: landscape)
-{
-	.welcome
-	{
 		height: var(--medium-screen);
 	}
 
@@ -152,39 +137,71 @@ body
 }
 
 /* Larger pads */
-@media only screen and (min-width: 768px) and (orientation: portrait)
+@media only screen and (min-width: 768px)
 {
 	.welcome
 	{
-		height: var(--small-screen);
+		height: var(--medium-screen);
 	}
 
 	.overlay1, .overlay2
 	{
-		height: var(--small-screen);
-	}
-}
-
-/* Larger pads */
-@media only screen and (min-width: 768px) and (orientation: landscape)
-{
-	.welcome
-	{
-		height: var(--big-screen);
+		height: var(--medium-screen);
 	}
 
-	.overlay1, .overlay2
+	.overlay1 .content, .overlay2 .content
 	{
-		height: var(--big-screen);
+		top: 40%;
+		transform: translate(0, -40%);
+	}
+
+	.overlay1 .content
+	{
+		transform: var(--content-diagonal1);
+	}
+
+	.overlay2 .content
+	{
+		transform: var(--content-diagonal2);
 	}
 }
 
 /* Horizontal pads and laptops */
-@media only screen and (min-width: 992px) and (orientation: landscape)
+@media only screen and (min-width: 1024px)
 {
 	.welcome
 	{
-		height: var(--bug-screen);
+		height: var(--medium-screen);
+	}
+
+	.overlay1, .overlay2
+	{
+		height: var(--medium-screen);
+	}
+
+	.overlay1 .content, .overlay2 .content
+	{
+		top: 45%;
+		transform: translate(0, -45%);
+	}
+
+	.overlay1 .content
+	{
+		transform: var(--content-diagonal1);
+	}
+
+	.overlay2 .content
+	{
+		transform: var(--content-diagonal2);
+	}
+}
+
+/* Really large screens */
+@media only screen and (min-width: 1280px) and (max-height: 720px)
+{
+	.welcome
+	{
+		height: var(--big-screen);
 	}
 
 	.overlay1, .overlay2
@@ -193,8 +210,7 @@ body
 	}
 }
 
-/* Really large screens */
-@media only screen and (min-width: 1280px)
+@media only screen and (orientation: landscape) and (max-height: 480px)
 {
 	.welcome
 	{
