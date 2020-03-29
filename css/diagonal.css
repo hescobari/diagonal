@@ -184,12 +184,12 @@ body
 {
 	.welcome
 	{
-		height: var(--medium-screen);
+		height: var(--bug-screen);
 	}
 
 	.overlay1, .overlay2
 	{
-		height: var(--medium-screen);
+		height: var(--big-screen);
 	}
 }
 
