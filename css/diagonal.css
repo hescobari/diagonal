@@ -197,7 +197,7 @@ body
 }
 
 /* Really large screens */
-@media only screen and (min-width: 1280px) and (max-height: 720px)
+@media only screen and (min-width: 1160px)
 {
 	.welcome
 	{
